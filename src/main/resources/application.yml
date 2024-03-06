@@ -1,0 +1,36 @@
+server:
+  port: 8831
+
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    virtual-host: /
+    username: root
+    password: root
+    listener:
+      simple:
+        prefetch: 1
+      direct:
+        retry:
+          enabled: true
+          max-attempts: 3
+          initial-interval: 6000
+          max-interval: 6000
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost/oj-ludd
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    open-in-view: true
+
+
+judge:
+  judge-machine-url: http://localhost:8821
+  test-case-url: http://localhost:8801
+
+
